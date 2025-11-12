@@ -5,7 +5,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.tools import Tool
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_classic.memory import ConversationBufferMemory
-from langchain_classic.agents import create_openai_tools_agent, AgentExecutor
+from langchain_classic.agents import create_openai_tools_agent, AgentExecutor, create_react_agent
 
 # -------------------------- 1. 基础配置（模型+API）--------------------------
 # 初始化 LLM（兼容 ReAct 框架，需支持函数调用）
@@ -107,7 +107,7 @@ memory = ConversationBufferMemory(
     return_messages=True  # 返回 ChatMessage 格式，适配模型
 )
 
-# -------------------------- 6. 修复：create_openai_tools_agent 无无效参数--------------------------
+# -------------------------- 6. 修复：create_openai_tools_agent 无效参数--------------------------
 agent = create_openai_tools_agent(
     llm=llm,
     tools=tools,
